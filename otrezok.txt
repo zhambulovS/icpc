@@ -1,0 +1,18 @@
+n,k=map(int,input().split())
+s=list(map(int,input().split()))
+l,r=0,0
+d={}
+mx=0
+ans1,ans2=0,0
+while r<n:
+    d[s[r]]=d.get(s[r],0)+1
+    while len(d)>k:
+        d[s[l]]-=1
+        if d[s[l]]==0:
+            del d[s[l]]
+        l+=1
+    if r-l+1>mx:
+        mx=r-l+1
+        ans1,ans2=l,r
+    r+=1 
+print(ans1+1,ans2+1)
